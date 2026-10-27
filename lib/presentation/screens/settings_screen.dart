@@ -318,6 +318,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         case 'fr':
                           displayName = 'Français';
                           break;
+                        case 'zh':
+                          displayName = '中文';
+                          break;
                         case 'en':
                         default:
                           displayName = 'English';
@@ -340,6 +343,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               break;
                             case 'fr':
                               label = 'Français';
+                              break;
+                            case 'zh':
+                              label = '中文';
                               break;
                             case 'en':
                             default:

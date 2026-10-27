@@ -21,8 +21,12 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "${PAT:-}" ]; then
-            echo "ERROR: Set repository secret PAT for accessing envs repo." >&2
-            exit 1
+            # Fork build: upstream PAT points at the author's private envs repo,
+            # which a fork cannot access. Skip it; the Gradle build falls back
+            # to debug signing when keystore.properties is absent, so the APK
+            # still builds (with a different signature than the Play build).
+            echo "No PAT secret in this fork, skipping private envs setup."
+            exit 0
           fi
           
           git clone https://${PAT}@github.com/theSoberSobber/envs.git envs-repo
